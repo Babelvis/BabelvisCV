@@ -1,0 +1,270 @@
+% FortySecondsCV LaTeX template
+% Copyright © 2019-2022 René Wirnata <rene.wirnata@pandascience.net>
+% Licensed under the 3-Clause BSD License. See LICENSE file for details.
+%
+% Please visit https://github.com/PandaScience/FortySecondsCV for the most
+% recent version! For bugs or feature requests, please open a new issue on
+% github.
+%
+% Contributors:
+% https://github.com/PandaScience/FortySecondsCV/graphs/contributors
+%
+% Attributions
+% ------------
+% * fortysecondscv is based on the twentysecondcv class by Carmine Spagnuolo
+%   (cspagnuolo@unisa.it), released under the MIT license and available under
+%   https://github.com/spagnuolocarmine/TwentySecondsCurriculumVitae-LaTex
+% * further attributions are indicated immediately before corresponding code
+
+
+%-------------------------------------------------------------------------------
+%                             ADDITIONAL PACKAGES
+%-------------------------------------------------------------------------------
+\documentclass[
+	a4paper,
+	nameandjobposition=before,
+	profilepicstyle=profilecircle,
+]{babelviscv}
+
+% fine tune line spacing
+% \usepackage{setspace}
+% \setstretch{1.1}
+
+% improve word spacing and hyphenation
+\usepackage{microtype}
+\usepackage{ragged2e}
+\usepackage{enumitem}
+
+% uncomment in case you don't want any hyphenation
+% \usepackage[none]{hyphenat}
+
+% take care of proper font encoding
+\ifxetexorluatex
+	\usepackage{fontspec}
+	\defaultfontfeatures{Ligatures=TeX}
+	% \newfontfamily\headingfont[Path=fonts/]{segoeuib.ttf} % use local font
+\else
+	\usepackage[utf8]{inputenc}
+	\usepackage[T1]{fontenc}
+\fi
+
+% use a sans serif font as default
+% \usepackage[sfdefault]{ClearSans}
+\usepackage[sfdefault]{noto}
+% \usepackage{fontenc}
+
+% multi-language CV XeLaTeX and polyglossia (should also work with LuaLaTeX)
+% NOTE: breaks \pointskill, \membership and some spacings
+% \ifxetexorluatex
+% 	\usepackage{polyglossia}
+% 	\newfontfamily\arabicfontsf[Script=Arabic,Scale=1.5]{Amiri}
+% 	\newfontfamily\englishfontsf{Clear Sans}
+% 	\setmainfont{Amiri}
+% 	\setdefaultlanguage{arabic}
+% 	\setotherlanguage{english}
+% \fi
+
+% enable mathematical syntax for some symbols like \varnothing
+\usepackage{amssymb}
+
+% bubble diagram configuration
+\usepackage{smartdiagram}
+\smartdiagramset{
+	% default font size is \large, so adjust to harmonize with sidebar layout
+	bubble center node font = \footnotesize,
+	bubble node font = \footnotesize,
+	% default: 4cm/2.5cm; make minimum diameter relative to sidebar size
+	bubble center node size = 0.4\sidebartextwidth,
+	bubble node size = 0.25\sidebartextwidth,
+	distance center/other bubbles = 1.5em,
+	% set center bubble color
+	bubble center node color = maincolor!70,
+	% define the list of colors usable in the diagram
+	set color list = {maincolor!10, maincolor!40,
+	maincolor!20, maincolor!60, maincolor!35},
+	% sets the opacity at which the bubbles are shown
+	bubble fill opacity = 0.8,
+}
+
+%-------------------------------------------------------------------------------
+%                            PERSONAL INFORMATION
+%-------------------------------------------------------------------------------
+%% mandatory information
+% your name
+\cvname{Bas Magré}
+% job title/career
+% \cvjobtitle{Panda Scientist,\\[0.2em] Panda of the Year}
+
+%% optional information
+% profile picture
+\cvprofilepic{pics/profile/basm.jpg}
+% logo picture
+\cvlogopic{pics/logo_babelvis.png}
+
+% NOTE: ordering in sidebar will mimic the following order
+\cvnameprofile{Sebastiaan Magré (Bas)}
+% email address
+\cvmail{bas.magre@babelvis.nl}
+% phone number
+\cvphone{+31 6 16 63 83 40}
+% short address/location, use \newline if more than 1 line is required
+\cvaddress{Zutphenseweg 23 GU 4.11\newline 7418 AG Deventer}
+% date of birth
+\cvbirthday{19 augustus 1982}
+% personal website
+\cvsite{https://babelvis.nl}
+% any other custom entry
+\cvcustomdata{\faFlag}{Nederlands}
+
+%-------------------------------------------------------------------------------
+%                              SIDEBAR 1st PAGE
+%-------------------------------------------------------------------------------
+% add more profile sections to sidebar on first page
+\addtofrontsidebar{
+	\sidesection{Competenties}
+		\babelviscompetentie{Analytisch vermogen}
+		\babelviscompetentie{Behulpvaardig}
+		\babelviscompetentie{Kwaliteitsgericht}
+		\babelviscompetentie{Proactief}
+		\babelviscompetentie{Resultaatgericht}
+}
+
+
+%-------------------------------------------------------------------------------
+%                              SIDEBAR 2nd PAGE
+%-------------------------------------------------------------------------------
+\definecolor{pastelgreen}{HTML}{D7ECD9}
+\definecolor{pastelpurple}{HTML}{D5D6EA}
+\definecolor{pastelorange}{HTML}{F5D5CB}
+\definecolor{pastelyellow}{HTML}{F6F6EB}
+
+\addtobacksidebar{
+
+	% include gosquare national flags from https://github.com/gosquared/flags;
+	% naming according to ISO 3166-1 alpha-2 country codes
+	\graphicspath{{pics/gosquared-flags/flags/flags-iso/shiny/64}}
+
+	\sidesection{Vaardigheden}
+		\babelvisskill{Pipelines/CICD}{5}
+		\babelvisskill{Docker}{5}
+		\babelvisskill{Kubernetes}{5}
+		\babelvisskill{Helm}{5}
+		\babelvisskill{C\#}{5}
+		\babelvisskill{Python}{4}
+		\babelvisskill{Java}{3}
+		\babelvisskill{Anisble}{5}
+
+	\sidesection{Talen}
+		\pointskill{\flag{NL.png}}{Nederlands}{4}
+		\pointskill{\flag{GB.png}}{Engels}{3}
+		% \pointskill{\flag{DE.png}}{Duits}{2}
+
+	% \sidesection{Levensmotto}
+	% 	\aboutme{
+	% 		Er zijn geen problemen er zijn alleen uitdagingen.
+	% 	}
+
+	% social network accounts incl. proper hyperlinks
+	\sidesection{Social Network}
+		\begin{icontable}{2.5em}{1em}
+		% see https://www.ipgp.fr/~moguilny/LaTeX/fontawesome5Icons.pdf
+			\social{\faLinkedin}
+				{https://github.com/Opvolger}
+				{LinkedIn}
+			\social{\faYoutube}
+				{https://www.youtube.com/@justanotherdevopsguy}
+				{Youtube kanaal}
+			\social{\faGithub}
+				{https://github.com/Opvolger}
+				{Github Privé projecten}
+		\end{icontable}
+}
+
+
+%-------------------------------------------------------------------------------
+%                         TABLE ENTRIES RIGHT COLUMN
+%-------------------------------------------------------------------------------
+\begin{document}
+
+\makefrontsidebar
+
+\cvsection{ } % hack zodat hij wat later begint
+\cvsection{Profiel}
+\sidetext{Ik ben een ervaren Cloud- en DevOps Engineer met een sterke achtergrond in softwareontwikkeling en operations. Ik heb uitgebreide kennis van Kubernetes, CI/CD-buildstraten en cloudmigraties, en combineer dit met een scherp oog voor security en betrouwbaarheid. \newline Dankzij mijn analytisch vermogen en doorzettingskracht ben ik in staat complexe omgevingen snel te doorgronden en om te zetten in schaalbare, efficiënte en veilige cloudoplossingen.}
+
+\cvsection{Werkervaring}
+\cvsubsection{Babelvis}
+	\begin{cvtable}[1.5]
+		\cvitemnolocation{2025 -- heden}{Co-founder}
+			{Het helpen van organisaties om hun migratie naar de (Europese) cloudproviders tot een succes te brengen}
+	\end{cvtable}
+\cvsubsection{Topicus}
+	\begin{cvtable}[1.5]
+		\cvitemnolocation{2022 -- 2025}{(Azure) Cloud Engineer}
+			{Migratie van ons Force Product Suite naar Azure (Cloud)}
+			\cvitemlist{Key Results:}{Realiseren CICD Pipeline in Azure, Containerization van 20+ applicaties, Kubernetes deployments met behulp van Helm Charts, Onboarden 20+ Teams doormiddel van workshops}
+		\cvitemnolocation{2019 -- 2022}{DevOps/Beheer}
+			{Vooral bezig aan de automatisering van de uitrol van de releases en het beheer van eigen acceptatie / productie netwerken. Het helpen van teams met migratie naar Kubernetes.}
+			\cvitemlist{Key Results:}{Introduceren van Ansible, Infra as Code, Automatisch OS-Updates, Monitoring en standby verbeteringen doorgevoerd}
+		\cvitemnolocation{2011 -- 2019}{Developer software}
+			{Gewerkt aan verschillende (hypotheek/vermogensopbouw) producten. backend en frontend. \newline Hier werkte ik met C\# (MVC/ASP.NET/NHibernate/Sprint/Autofac en meer), Java (Android app/plugins/addons), Python, Jenkins, Oracle / mssql, Angular, Knockout, Bootstrap, Git, RabbitMq, MSMQ, MQTT, Puppet, Ansible, Docker.}
+	\end{cvtable}
+\cvsubsection{Caesar Groep}
+	\begin{cvtable}[1.5]
+		\cvitem{2007 -- 2011}{Systeemontwerper/programmeur}{Centraal Boekhuis}
+			{Onderhouden Oracle systemen.}
+		\cvitemnolocation{2007 -- 2011}{Applicatie Ontwikkelaar}
+			{Oracle Application Express - Applicaties.}
+	\end{cvtable}
+
+\newpage
+\makebacksidebar
+
+\cvsection{Opleidingen}
+	\begin{cvtable}[1.5]
+		\cvitem{2004 -- 2007}{HBO Hogeschool Arnhem en Nijmegen}{Arnhem}
+			{Technische informatica/Computertechniek
+			\newline(geslaagd in 2007)}
+		\cvitem{2022 -- 2025}{MBO-4 ROC Aventus}{Apeldoorn}
+			{Technische Kantoor Automatisering
+			\newline(geslaagd in 2004)}
+	\end{cvtable}
+
+\cvsection{Cursussen}
+	\begin{cvtable}[1.5]
+		\cvitemnolocation{2017}{Senior craftsmanship}
+			{Hoe om te gaan met moderne functies in C\# en hoe de organisaties zover zien te krijgen dat deze kunnen worden toegevoegd in bestaande code-base.}
+		\cvitemnolocation{2017}{Zakelijk Engels}
+			{Zakelijk Engels cursus verdeeld over meerdere weken.}
+		\cvitemnolocation{2016}{Angular 2}
+			{Engelstalige workshop opzetten, onderhouden en uitbreiden van een Angular 2+ applicatie.}
+		\cvitemnolocation{2015}{Clean Code}
+			{Theorie en praktijk voorbeelden en discussie over wat nette code is.}
+		\cvitemnolocation{2013}{Zakelijke Financieringen}
+			{Domein kennis over zakelijke financieringen. De stappen welke gezet moeten worden totdat er een lening kan worden aangegaan.}
+		\cvitemnolocation{2012}{Hypotheek Basis}
+			{De basis begrippen van een hypotheek, van aanvraag tot aflossing.}
+		\cvitemnolocation{2010}{Caesar Groep - Beyond APEX Advanced}
+			{Meehelpen opzetten en tevens deel genomen aan de cursus over geavanceerde toepassingsmogelijkheden binnen Oracle Application Express.}
+		\cvitemnolocation{2008}{Oracle - OCA 1/2 (gehaald)}
+			{Eerste deel van Oracle OCA certificering.}
+		\cvitemnolocation{2008}{5Hart - Diverse}
+			{Het leren omgaan met Oracle SQL en PL/SQL.}
+		\end{cvtable}
+
+\cvsection{Nevenactiviteiten}
+	\cvsubsection{Topicus/Etty Hillesum Lyceum}
+		\begin{cvtable}[1.5]
+			\cvitemnolocation{2016 -- 2024}{Lesgeven}
+				{Lessen verzorgen op het “Etty Hillesum Lyceum - Het Vlier”. Dit in samenwerking met andere Topicanen.}
+		\end{cvtable}
+
+	\cvsubsection{Opel Kadett C Club Nederland}
+		\begin{cvtable}[1.5]
+			\cvitemnolocation{2009 -- 2022}{Bestuur}
+				{Mede bestuurslid en het onderhouden van de website met daarbij het maken van het Opel Kadett C Register}
+		\end{cvtable}
+
+\cvsignature
+
+\end{document}

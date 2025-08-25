@@ -21,7 +21,7 @@
 %                           CLASS NAME AND VERSION
 %-------------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{fortysecondscv}[2020/10/19 CV class]
+\ProvidesClass{babelviscv}[2025/08/25 CV class]
 
 
 %-------------------------------------------------------------------------------
@@ -49,7 +49,7 @@
 ]{geometry}
 
 % pre-define some colors the user can choose from
-\definecolor{cvblue}{HTML}{0E5484}
+\definecolor{cvblue}{HTML}{08398B}
 \definecolor{cvgreen}{HTML}{007170}
 \definecolor{cvred}{HTML}{8B0000}
 \definecolor{cvsidecolor}{HTML}{E7E7E7}
@@ -303,11 +303,11 @@
 \newcommand*{\cvnameformat}{\Huge\color{maincolor}}
 
 % style for job title
-\newcommand*{\cvjobtitleformat}{\Large\color{black!80}}
+% \newcommand*{\cvjobtitleformat}{\Large\color{black!80}}
 
 % mandatory personal information
 \newcommand*{\cvname}[1]{\renewcommand{\cvname}{#1}}
-\newcommand*{\cvjobtitle}[1]{\renewcommand{\cvjobtitle}{#1}}
+% \newcommand*{\cvjobtitle}[1]{\renewcommand{\cvjobtitle}{#1}}
 
 % profile picture (optional)
 \newcommand{\plotprofilepicture}{}
@@ -344,8 +344,8 @@
 }
 
 % social network item; \social{<icon>}{<url>}{<text>}
-\newcommand*{\social}[3]{%
-	\socialicon{#1} & \href{#2}{\sidetext{#3}}\\%
+\newcommand*{\social}[4][1em]{%
+	\hspace{#1}\socialicon{#2} & \href{#3}{\sidetext{#4}}\\%
 }
 
 % personal information item; \personal{<icon>}{<text>}
@@ -364,10 +364,12 @@
 % useful shortcuts
 % NOTE: we use href instead of url so user can decide textformatting since url
 % automatically uses \texttt{} as format for the url
-\newcommand*{\cvbirthday}[1]{\cvcustomdata{\faUser}{#1}}
-\newcommand*{\cvaddress}[1]{\cvcustomdata{\faEnvelope}{#1}}
+\newcommand*{\cvnameprofile}[1]{\cvcustomdata{\faUser}{#1}}
+\newcommand*{\cvbirthday}[1]{\cvcustomdata{\faCalendar}{#1}}
+\newcommand*{\cvaddress}[1]{\cvcustomdata{\faHome}{#1}}
 \newcommand*{\cvphone}[1]{\cvcustomdata{\faPhone}{\href{tel:#1}{#1}}}
 \newcommand*{\cvsite}[1]{\cvcustomdata{\faGlobe}{\href{#1}{#1}}}
+\newcommand*{\cvrijbewijs}[1]{\cvcustomdata{\faCar}{#1}}
 \newcommand*{\cvmail}[1]{\cvcustomdata{\faAt}{\href{mailto:#1}{#1}}}
 \newcommand*{\cvkey}[2]{\cvcustomdata{\faKey}{%
 	\href{https://keyserver.ubuntu.com/pks/lookup?search=#2\&op=vindex\&fingerprint=on}{#1}%
@@ -377,14 +379,16 @@
 \newcommand{\nameandjob}{%
 	{\cvnameformat\cvname}\par%
 	\setlength{\parskip}{2ex}
-	{\cvjobtitleformat\cvjobtitle}\par%
+	% {\cvjobtitleformat\cvjobtitle}\par%
 	\setlength{\parskip}{1ex}
 }
 
 \newcommand{\nameandjobbeforepic}{%
 	\ifthenelse{\equal{\nameandjobposition}{before}}{%
+		\begin{center}
 		\nameandjob
 		\vspace{1ex}
+        \end{center}
 	}{}
 }
 \newcommand{\nameandjobafterpic}{%
@@ -498,6 +502,27 @@
 		\raisebox{0.5\height-0.4ex}{\scriptsize\faCircle}%
 		}
 	}\par%
+}
+
+% \babelvisskill[<indent>]{<description>}{<points>}[<maxpoints>] creates
+% | [indent]  description  \hfill  ● ● ● ○ ○ |
+% -- inspired by arravc.cls by LianTze Lim: https://github.com/liantze/AltaCV
+\NewDocumentCommand{\babelvisskill}{ O{0em} m m O{5} }{%
+	\hspace{#1} \sidetext{#2} \hfill%
+	\foreach \x in {1,...,#4}{%
+		\space%
+		{\ifnumgreater{\x}{#3}{\color{skillbg}}{\color{iconcolor}}% from etoolbox
+		% don't use totalheight; see https://tex.stackexchange.com/a/41014
+		\raisebox{0.5\height-0.4ex}{\scriptsize\faCircle}%
+		}
+	}\par%
+}
+
+% \skill[<indent>]{<description>} creates in sidebar
+% | [indent] some longer skill description  |
+\newcommand{\babelviscompetentie}[2][0em]{
+	\hspace{#1} \parbox{\linewidth-#1-2.5em}{\sidetext{#2}}%
+	\hfill \par%
 }
 
 \newcommand{\barskill}[4][1ex]{
@@ -706,10 +731,10 @@
 
 		% name and job - when \nameandjobposition = 'after'
 		\nameandjobafterpic
-
+		\sidesection{Personalia}
 		% personal information
-		\vspace*{0.5em}
-		\begin{icontable}[1.6]{1.7em}{0.4em}
+		% \vspace*{0.5em}
+		\begin{icontable}[2]{1.7em}{0.4em}
 			\personaldata
 		\end{icontable}
 
@@ -721,7 +746,7 @@
 \newcommand{\makebacksidebar}{%
 	\begin{sidebar}
 		% begin with name instead of picture
-		\nameandjob
+		% \nameandjob
 
 		% make sure there is no space at top, but after cvjob
 		\setlength{\parskip}{1ex}
@@ -784,6 +809,28 @@
 	}\\
 }
 
+
+\newcommand{\cvitemnolocation}[3]{%
+	\parbox[t]{\datecolwidth}{\raggedright #1} &%
+	\parbox[t]{0.98\textwidth-\datecolwidth}{%
+			\parbox[t]{\linewidth-\widthof{\footnotesize}-1em}{\raggedright \textbf{#2}}%
+			\newline
+			\textcolor{itemtextcolor}{#3}%\vspace{\parsep}%
+	}\\
+}
+
+\newcommand{\cvitemlist}[2]{%
+	\parbox[t]{\datecolwidth}{\raggedright} &%
+	\parbox[t]{0.98\textwidth-\datecolwidth}{%
+	\textcolor{itemtextcolor}{#1}
+	\begin{itemize}
+		\foreach \x [count=\xi] in {#2} {\vspace{-1ex}\item \x\par}%
+	\end{itemize}
+	}\\
+}
+
+
+
 % | <date>         <bold-title>  \par\hfill  <location>  |
 % |                <longer description>              |
 % or, if description is empty:
@@ -814,4 +861,4 @@
 	}\\
 }
 
-% EOF - fortysecondscv.cls
+% EOF - babelviscv.cls
