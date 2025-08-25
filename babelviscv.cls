@@ -818,6 +818,12 @@
 	}\\
 }
 
+\newcommand{\cvitemnolocationnodescription}[2]{%
+	\parbox[t]{\datecolwidth}{\raggedright #1} &%
+	\parbox[t]{0.98\textwidth-\datecolwidth}{%
+			\parbox[t]{\linewidth-\widthof{\footnotesize}-1em}{\raggedright \textbf{#2}}%
+	}\\
+}
 
 \newcommand{\cvitemnolocation}[3]{%
 	\parbox[t]{\datecolwidth}{\raggedright #1} &%
@@ -833,7 +839,7 @@
 	\parbox[t]{0.98\textwidth-\datecolwidth}{%
 	\textcolor{itemtextcolor}{#1}
 	\begin{itemize}
-		\foreach \x [count=\xi] in {#2} {\vspace{-1ex}\item \x\par}%
+		\foreach \x [count=\xi] in {#2} {\vspace{-1.5ex}\item \x\par}%
 	\end{itemize}
 	}\\
 }
