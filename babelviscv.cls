@@ -345,7 +345,7 @@
 
 % social network item; \social{<icon>}{<url>}{<text>}
 \newcommand*{\social}[4][1em]{%
-	\hspace{#1}\socialicon{#2} & \href{#3}{\sidetext{#4}}\\%
+	\circleicon{#2} & \href{#3}{\sidetext{#4}}\\%
 }
 
 % personal information item; \personal{<icon>}{<text>}
@@ -502,6 +502,15 @@
 		\raisebox{0.5\height-0.4ex}{\scriptsize\faCircle}%
 		}
 	}\par%
+}
+
+% \taalkill[<indent>]{<icon>}{<description>}{<points>}[<maxpoints>] creates
+% | [indent] [icon]  description  \hfill  ● ● ● ○ ○ |
+% -- inspired by arravc.cls by LianTze Lim: https://github.com/liantze/AltaCV
+\NewDocumentCommand{\taalkill}{ O{0em} m m m O{5} }{%
+	\hspace{#1} \cvicon{#2} ~ \sidetext{#3} \hfill%
+	\sidetext{#4}
+	\par%
 }
 
 % \babelvisskill[<indent>]{<description>}{<points>}[<maxpoints>] creates
