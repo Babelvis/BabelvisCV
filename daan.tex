@@ -121,7 +121,21 @@
 %                              SIDEBAR 1st PAGE
 %-------------------------------------------------------------------------------
 % add more profile sections to sidebar on first page
+
 \addtofrontsidebar{
+
+	% social network accounts incl. proper hyperlinks
+	\sidesection{Social Network}
+		\begin{icontable}[1]{1.7em}{0.4em}
+		% see https://www.ipgp.fr/~moguilny/LaTeX/fontawesome5Icons.pdf
+			\socialbabelvis{\faLinkedin}
+				{www.linkedin.com/in/daan-roeterink/}
+				{LinkedIn}
+			\socialbabelvis{\faGithub}
+				{https://github.com/daanroeterink}
+				{Github (Privé projecten)}
+		\end{icontable}
+
 	\sidesection{Competenties}
 		\babelviscompetentie{Samenwerkingsgericht}
 		\babelviscompetentie{Loyaal en betrouwbaar}
@@ -165,18 +179,6 @@
 	% 	\aboutme{
 	% 		Er zijn geen problemen er zijn alleen uitdagingen.
 	% 	}
-
-	% social network accounts incl. proper hyperlinks
-	\sidesection{Social Network}
-		\begin{icontable}[1]{1.7em}{0.4em}
-		% see https://www.ipgp.fr/~moguilny/LaTeX/fontawesome5Icons.pdf
-			\socialbabelvis{\faLinkedin}
-				{www.linkedin.com/in/daan-roeterink/}
-				{LinkedIn}
-			\socialbabelvis{\faGithub}
-				{https://github.com/daanroeterink}
-				{Github (Privé projecten)}
-		\end{icontable}
 }
 
 
