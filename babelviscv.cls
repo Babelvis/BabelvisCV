@@ -44,6 +44,9 @@
 	nomarginpar,
 ]{geometry}
 
+% use carlito font as default
+\usepackage[sfdefault]{carlito}
+
 % pre-define some colors the user can choose from
 \definecolor{cvblue}{HTML}{08398B}
 \definecolor{cvgreen}{HTML}{007170}
@@ -289,6 +292,21 @@
 % "starred version kills the indentation of the paragraph following the title"
 \titlespacing*{\subsubsection}{0pt}{1ex}{1ex}
 
+% some global document variables
+
+% improve word spacing and hyphenation
+\usepackage{microtype}
+\usepackage{ragged2e}
+
+% take care of proper font encoding
+\ifxetexorluatex
+	\usepackage{fontspec}
+	\defaultfontfeatures{Ligatures=TeX}
+	% \newfontfamily\headingfont[Path=fonts/]{segoeuib.ttf} % use local font
+\else
+	\usepackage[utf8]{inputenc}
+	\usepackage[T1]{fontenc}
+\fi
 
 %-------------------------------------------------------------------------------
 %                              SIDEBAR ELEMENTS
@@ -489,23 +507,6 @@
 	\hfill \par%
 }
 
-% label for wheel charts
-\newcommand{\chartlabel}[2][skillbg]{%
-	\begin{tikzpicture}
-	\node[
-		fill=#1!25, % interior color
-		anchor=base,
-		draw=#1, % line color
-		rounded corners,
-		inner xsep=1ex, % distance from left/right border to text
-		inner ysep=0.75ex, % distance top/bottom border to text
-		text height=1.5ex, % align text vertically in box (at least as resulting
-		text depth=.25ex   % effect)
-	]{\sidetext{#2}};%
-	\end{tikzpicture}
-}
-
-
 \newenvironment{sidebarminipage}%
 	{\begin{minipage}{\sidebartextwidth}}%
 	{\end{minipage}}%
@@ -525,73 +526,6 @@
 
 \newcommand{\membership}[3][4em]{
 	\includegraphics[align=c,width=#1]{#2} & \sidetext{#3} \\[3ex]
-}
-
-% adapted from https://tex.stackexchange.com/a/82729
-\newcommand{\wheelchart}[4][-90]{%
-	\def\outerradius{#2}%
-	\def\innerradius{#3}%
-	% Calculate total
-	\pgfmathsetmacro{\totalnum}{0}%
-	\foreach\value/\colour/\name in {#4} {%
-		\pgfmathparse{\value+\totalnum}%
-		\global\let\totalnum=\pgfmathresult%
-	}%
-	\begin{tikzpicture}
-
-		% Calculate the thickness and the middle line of the wheel
-		\pgfmathsetmacro{\wheelwidth}{\outerradius-\innerradius}
-		\pgfmathsetmacro{\midradius}{(\outerradius+\innerradius)/2}
-
-		% Rotate so we start from the top
-		\begin{scope}[rotate=#1, on background layer]
-		% Loop through each value set. \cumnum keeps track of where we are in the
-		% wheel
-		\pgfmathsetmacro{\cumnum}{0}
-		\foreach \value/\width/\colour/\name in {#4} {
-			\pgfmathsetmacro{\newcumnum}{\cumnum + \value/\totalnum*360}
-
-			% Calculate the percent value
-			\pgfmathsetmacro{\percentage}{\value/\totalnum*100}
-			% Calculate the mid angle of the colour segments to place the labels
-			\pgfmathsetmacro{\midangle}{-(\cumnum+\newcumnum)/2}
-
-			% This is necessary for the labels to align nicely
-			\pgfmathparse{
-				(-\midangle>180?"west":"east")
-			} \edef\textanchor{\pgfmathresult}
-			\pgfmathparse{
-				(-\midangle>180?"flush left":"flush right")
-			} \edef\textalign{\pgfmathresult}
-			\pgfmathsetmacro\labelshiftdir{1-2*(-\midangle<180)}
-
-			% Draw the color segments. Somehow, the \midrow units got lost, so
-			% we add 'pt' at the end. Not nice...
-			\filldraw[draw=white,fill=\colour]
-				(-\cumnum:\outerradius)
-				arc (-\cumnum:-(\newcumnum):\outerradius)
-				-- (-\newcumnum:\innerradius)
-				arc (-\newcumnum:-(\cumnum):\innerradius)
-				-- cycle;
-
-			% Draw the data labels
-			\draw [*-,thin,wheelchartlabelcolor] node [append after command={
-				(\midangle:\midradius pt) --
-				(\midangle:\outerradius + 1ex) --
-				(\tikzlastnode)}] at (\midangle:\outerradius + 1ex) [
-				xshift=\labelshiftdir*0.5cm,inner sep=1ex,
-				outer sep=0pt,
-				text width=\width,
-				anchor=\textanchor,
-				align=\textalign,
-				font=\small,
-				text=wheeltextcolor
-			]{\name};
-			% Set the old cumulated angle to the new value
-			\global\let\cumnum=\newcumnum
-		}
-		\end{scope}
-	\end{tikzpicture}\par
 }
 
 \newcommand{\cvsignature}{
@@ -693,9 +627,6 @@
 
 \newcommand{\makebacksidebar}{%
 	\begin{sidebar}
-		% begin with name instead of picture
-		% \nameandjob
-
 		% make sure there is no space at top, but after cvjob
 		\setlength{\parskip}{1ex}
 

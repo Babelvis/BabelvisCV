@@ -12,74 +12,9 @@
 %   https://github.com/spagnuolocarmine/TwentySecondsCurriculumVitae-LaTex
 % * further attributions are indicated immediately before corresponding code
 
-
-%-------------------------------------------------------------------------------
-%                             ADDITIONAL PACKAGES
-%-------------------------------------------------------------------------------
 \documentclass[
 	a4paper
 ]{babelviscv}
-
-% fine tune line spacing
-% \usepackage{setspace}
-% \setstretch{1.1}
-
-% improve word spacing and hyphenation
-\usepackage{microtype}
-\usepackage{ragged2e}
-\usepackage{enumitem}
-
-% uncomment in case you don't want any hyphenation
-% \usepackage[none]{hyphenat}
-
-% take care of proper font encoding
-\ifxetexorluatex
-	\usepackage{fontspec}
-	\defaultfontfeatures{Ligatures=TeX}
-	% \newfontfamily\headingfont[Path=fonts/]{segoeuib.ttf} % use local font
-\else
-	\usepackage[utf8]{inputenc}
-	\usepackage[T1]{fontenc}
-\fi
-
-% use a sans serif font as default
-% \usepackage[sfdefault]{ClearSans}
-% \usepackage[sfdefault]{noto}
-% \usepackage{fontenc}
-\usepackage[sfdefault]{carlito}
-
-% multi-language CV XeLaTeX and polyglossia (should also work with LuaLaTeX)
-% NOTE: breaks \pointskill, \membership and some spacings
-% \ifxetexorluatex
-% 	\usepackage{polyglossia}
-% 	\newfontfamily\arabicfontsf[Script=Arabic,Scale=1.5]{Amiri}
-% 	\newfontfamily\englishfontsf{Clear Sans}
-% 	\setmainfont{Amiri}
-% 	\setdefaultlanguage{arabic}
-% 	\setotherlanguage{english}
-% \fi
-
-% enable mathematical syntax for some symbols like \varnothing
-\usepackage{amssymb}
-
-% bubble diagram configuration
-\usepackage{smartdiagram}
-\smartdiagramset{
-	% default font size is \large, so adjust to harmonize with sidebar layout
-	bubble center node font = \footnotesize,
-	bubble node font = \footnotesize,
-	% default: 4cm/2.5cm; make minimum diameter relative to sidebar size
-	bubble center node size = 0.4\sidebartextwidth,
-	bubble node size = 0.25\sidebartextwidth,
-	distance center/other bubbles = 1.5em,
-	% set center bubble color
-	bubble center node color = maincolor!70,
-	% define the list of colors usable in the diagram
-	set color list = {maincolor!10, maincolor!40,
-	maincolor!20, maincolor!60, maincolor!35},
-	% sets the opacity at which the bubbles are shown
-	bubble fill opacity = 0.8,
-}
 
 %-------------------------------------------------------------------------------
 %                            PERSONAL INFORMATION
@@ -170,7 +105,8 @@
 
 \makefrontsidebar
 
-\cvsection{ } % hack zodat hij wat later begint
+\sidetext\tiny{} % hack om in te springen
+% \cvsection{}
 \cvsection{Profiel}
 \sidetext{Ik ben een gedreven Cloud- en DevOps Engineer met diepgaande kennis van Kubernetes en moderne ontwikkel- en deploymentomgevingen. Dankzij mijn achtergrond als programmeur en mijn ervaring in DevOps weet ik complexe technische vraagstukken snel te doorgronden en om te zetten in praktische oplossingen. 
 \newline\newline  

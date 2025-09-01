@@ -12,20 +12,9 @@
 %   https://github.com/spagnuolocarmine/TwentySecondsCurriculumVitae-LaTex
 % * further attributions are indicated immediately before corresponding code
 
-
-%-------------------------------------------------------------------------------
-%                             ADDITIONAL PACKAGES
-%-------------------------------------------------------------------------------
 \documentclass[
 	a4paper
 ]{babelviscv}
-
-% improve word spacing and hyphenation
-\usepackage{microtype}
-\usepackage{ragged2e}
-
-% use carlito font as default
-\usepackage[sfdefault]{carlito}
 
 %-------------------------------------------------------------------------------
 %                              SIDEBAR 1st PAGE
@@ -115,9 +104,13 @@
 
 \makefrontsidebar
 
-\cvsection{ } % hack zodat hij wat later begint
+\sidetext\tiny{} % hack om in te springen
+% \cvsection{}
 \cvsection{Profiel}
-\sidetext{Ik ben een ervaren Cloud- en DevOps Engineer met een sterke achtergrond in softwareontwikkeling en operations. Ik heb uitgebreide kennis van Kubernetes, CI/CD-buildstraten en cloudmigraties, en combineer dit met een scherp oog voor security en betrouwbaarheid. \newline Dankzij mijn analytisch vermogen en doorzettingskracht ben ik in staat complexe omgevingen snel te doorgronden en om te zetten in schaalbare, efficiënte en veilige cloudoplossingen.}
+\sidetext{Ik ben een ervaren Cloud- en DevOps Engineer met een sterke achtergrond in softwareontwikkeling en operations. Ik heb uitgebreide kennis van Kubernetes, CI/CD-buildstraten en cloudmigraties, en combineer dit met een scherp oog voor security en betrouwbaarheid.
+\newline 
+\newline
+Dankzij mijn analytisch vermogen en doorzettingskracht ben ik in staat complexe omgevingen snel te doorgronden en om te zetten in schaalbare, efficiënte en veilige cloudoplossingen.}
 
 \cvsection{Werkervaring}
 \cvsubsection{Babelvis}
@@ -129,12 +122,18 @@
 	\begin{cvtable}[0.5]
 		\cvitem{2022 -- 2025}{(Azure) Cloud Engineer}{}
 			{Migratie van ons Force Product Suite naar Azure (Cloud)}
-			\cvitemlist{Key Results:}{Realiseren CICD Pipeline in Azure, Containerization van 20+ applicaties, Kubernetes deployments met behulp van Helm Charts, Onboarden 20+ Teams door middel van workshops}
+			\cvitemlist
+				{Key Results:}
+					{Realiseren CICD Pipeline in Azure, Containerization van 20+ applicaties, Kubernetes deployments met behulp van Helm Charts, Onboarden 20+ Teams door middel van workshops}
 		\cvitem{2019 -- 2022}{DevOps/Beheer}{}
 			{Vooral bezig aan de automatisering van de uitrol van de releases en het beheer van eigen acceptatie / productie netwerken. Het helpen van teams met migratie naar Kubernetes.}
-			\cvitemlist{Key Results:}{Introduceren van Ansible, Realisatie hosting Force as SaaS middels Infra-as-Code, Infra-as-code als way of work voor de gehele afdeling, Automatiseren middels Infra-as-code van OS updates en monitoring}
+			\cvitemlist
+				{Key Results:}
+					{Introduceren van Ansible, Realisatie hosting Force as SaaS middels Infra-as-Code, Infra-as-code als way of work voor de gehele afdeling, Automatiseren middels Infra-as-code van OS updates en monitoring}
 		\cvitem{2011 -- 2019}{Developer software}{}
-			{Gewerkt aan verschillende (hypotheek/vermogensopbouw) producten. backend en frontend. \newline Hier werkte ik met C\# (MVC/ASP.NET/NHibernate/Spring/Autofac en meer), Java (Android app/plugins/addons), Python, Jenkins, Oracle / mssql, Angular, Knockout, Bootstrap, Git, RabbitMq, MSMQ, MQTT, Puppet, Ansible, Docker.}
+			{Gewerkt aan verschillende (hypotheek/vermogensopbouw) producten. backend en frontend. 
+			\newline
+			Hier werkte ik met C\# (MVC/ASP.NET/NHibernate/Spring/Autofac en meer), Java (Android app/plugins/addons), Python, Jenkins, Oracle / mssql, Angular, Knockout, Bootstrap, Git, RabbitMq, MSMQ, MQTT, Puppet, Ansible, Docker.}
 	\end{cvtable}
 \cvsubsection{Caesar Groep}
 	\begin{cvtable}[0.5]
@@ -148,10 +147,12 @@
 
 \cvsection{Opleidingen}
 	\begin{cvtable}[1.5]
-		\cvitem{2004 -- 2007}{HBO Hogeschool Arnhem en Nijmegen}{Arnhem}
-			{Technische informatica/Computertechniek}
-		\cvitem{2022 -- 2025}{MBO-4 ROC Aventus}{Apeldoorn}
-			{Technische Kantoor Automatisering}
+		\cvitem	{2004 -- 2007}
+				{HBO Hogeschool Arnhem en Nijmegen}{Arnhem}
+				{Technische informatica/Computertechniek}
+		\cvitem	{2022 -- 2025}
+				{MBO-4 ROC Aventus}{Apeldoorn}
+				{Technische Kantoor Automatisering}
 	\end{cvtable}
 
 \cvsection{Cursussen}
