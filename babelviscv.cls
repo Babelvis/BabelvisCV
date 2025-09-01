@@ -53,7 +53,7 @@
 \definecolor{cvgreen}{HTML}{007170}
 \definecolor{cvred}{HTML}{8B0000}
 \definecolor{cvsidecolor}{HTML}{E7E7E7}
-\definecolor{cvsectioncolor}{HTML}{0395DE}
+\definecolor{cvsectioncolor}{HTML}{08398B}
 \definecolor{cvsubsectioncolor}{HTML}{4D4D4D}
 % set default values
 \colorlet{maincolor}{cvblue}
@@ -329,6 +329,7 @@
 	\ifthenelse{\equal{\logoposition}{before}}{%
 		\renewcommand{\plotlogobefore}{%
 			\begin{figure}\centering%
+				% \includesvg{#1}
 				\includegraphics[align=c, width=\logowidth]{#1}%
 			\end{figure}
 			\vspace*{\logospace}%
@@ -337,6 +338,7 @@
 		\renewcommand{\plotlogoafter}{%
 			\vspace*{\logospace}%
 			\begin{figure}\centering%
+				% \includesvg{#1}
 				\includegraphics[align=c, width=\logowidth]{#1}%
 			\end{figure}
 		}%
@@ -805,32 +807,27 @@
 % or, if description is empty:
 % | <date>         <title>       \hfill  <location>  |
 \newcommand{\cvitem}[4]{%
-	\parbox[t]{\datecolwidth}{\raggedright #1} &%
+	\parbox[t]{\datecolwidth}{\raggedright \textbf{#1}} &%
 	\parbox[t]{0.98\textwidth-\datecolwidth}{%
 		\if\relax\detokenize{#4}\relax%
-			\parbox[t]{\linewidth-\widthof{\footnotesize #3}-1em}{\raggedright #2}%
-			\hfill {\footnotesize#3}%
+			\if\relax\detokenize\expandafter{#3}\relax
+				\parbox[t]{\linewidth-\widthof{\footnotesize}-1em}{\raggedright \textbf{#2}}%
+			\else
+				\parbox[t]{\linewidth-\widthof{\footnotesize}-1em}{\raggedright \textbf{#2}}%
+				\newline
+				\textcolor{itemtextcolor}{#4}%\vspace{\parsep}%
+			\fi
 		\else%
-			\parbox[t]{\linewidth-\widthof{\footnotesize #3}-1em}{\raggedright \textbf{#2}}%
-			\hfill {\footnotesize#3} \\%
-			\textcolor{itemtextcolor}{#4}%\vspace{\parsep}%
+			\if\relax\detokenize\expandafter{#3}\relax
+				\parbox[t]{\linewidth-\widthof{\footnotesize #3}-1em}{\raggedright \textbf{#2}}%
+				\hfill {\footnotesize#3} \\%
+				\textcolor{itemtextcolor}{#4}%\vspace{\parsep}%
+			\else
+				\parbox[t]{\linewidth-\widthof{\footnotesize}-1em}{\raggedright \textbf{#2}}%
+				\newline
+				\textcolor{itemtextcolor}{#4}%\vspace{\parsep}%
+			\fi
 		\fi%
-	}\\
-}
-
-\newcommand{\cvitemnolocationnodescription}[2]{%
-	\parbox[t]{\datecolwidth}{\raggedright #1} &%
-	\parbox[t]{0.98\textwidth-\datecolwidth}{%
-			\parbox[t]{\linewidth-\widthof{\footnotesize}-1em}{\raggedright \textbf{#2}}%
-	}\\
-}
-
-\newcommand{\cvitemnolocation}[3]{%
-	\parbox[t]{\datecolwidth}{\raggedright #1} &%
-	\parbox[t]{0.98\textwidth-\datecolwidth}{%
-			\parbox[t]{\linewidth-\widthof{\footnotesize}-1em}{\raggedright \textbf{#2}}%
-			\newline
-			\textcolor{itemtextcolor}{#3}%\vspace{\parsep}%
 	}\\
 }
 
@@ -843,8 +840,6 @@
 	\end{itemize}
 	}\\
 }
-
-
 
 % | <date>         <bold-title>  \par\hfill  <location>  |
 % |                <longer description>              |
