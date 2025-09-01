@@ -1,0 +1,28 @@
+services:
+  babelviscv-joost:
+    image: babelvis/cv
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      - NAME=joostw
+    volumes:
+      - .:/files
+
+  babelviscv-daan:
+    image: babelvis/cv
+    environment:
+      - NAME=daan
+    volumes:
+      - .:/files
+
+  babelviscv-bas:
+    image: babelvis/cv
+    environment:
+      - NAME=basm
+    volumes:
+      - .:/files
+
+# docker compose build
+# docker compose up
+# docker compose down
