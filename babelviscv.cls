@@ -344,11 +344,18 @@
 	\circleicon{#1} & {\sidetext{#2}}\\%
 }
 
+% add Competenties Usage:
+% \addcompetenciesdata{<Text>}
+\newcommand{\competenciesdata}{}
+\newcommand*{\addcompetenciesdata}[1]{%
+	\apptocmd{\competenciesdata}{\babelviscompetentie{#1}}{}{}%
+}
+
 % add social network accounts incl. proper hyperlinks Usage:
-% \sncustomdata{<Icon>}{<Url>}{<Text>}
+% \addsocialnetworkdata{<Icon>}{<Url>}{<Text>}
 % icon can be taken from FontAwesome or Academicon for example
 \newcommand{\socialnetworkdata}{}
-\newcommand*{\sncustomdata}[3]{%
+\newcommand*{\addsocialnetworkdata}[3]{%
 	\apptocmd{\socialnetworkdata}{\socialbabelvis{#1}{#2}{#3}}{}{}%
 }
 
@@ -597,11 +604,15 @@
 			\personaldata
 		\end{icontable}
 
-			% social network accounts incl. proper hyperlinks
+		% social network accounts incl. proper hyperlinks
 		\sidesection{Social Network}
 		\begin{icontable}[1]{1.7em}{0.4em}
 			\socialnetworkdata
 		\end{icontable}
+
+		% add Competenties to sidebar on first page
+		\sidesection{Competenties}
+			\competenciesdata
 
 		\frontsidebar
 	\end{sidebar}

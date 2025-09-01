@@ -41,29 +41,27 @@
 % any other custom entry
 \cvcustomdata{\faFlag}{Nederlands}
 
-% social network accounts incl. proper hyperlinks
-\sncustomdata{\faLinkedin}{http://www.linkedin.com/in/joostwillemse/}{LinkedIn}
-%-------------------------------------------------------------------------------
-%                              SIDEBAR 1st PAGE
-%-------------------------------------------------------------------------------
-% add more profile sections to sidebar on first page
-\addtofrontsidebar{
-	\sidesection{Competenties}
-		\babelviscompetentie{Leiderschap en strategisch inzicht}
-		\babelviscompetentie{Teamontwikkeling en coaching}
-		\babelviscompetentie{Bruggenbouwer tussen business en techniek}
-		\babelviscompetentie{Resultaatgericht werken}
-		\babelviscompetentie{Communicatieve vaardigheden}
-}
+%                            SOCIAL NETWORK ACCOUNTS
+
+% see https://www.ipgp.fr/~moguilny/LaTeX/fontawesome5Icons.pdf
+% add social network accounts incl. proper hyperlinks Usage:
+% \addsocialnetworkdata{<Icon>}{<Url>}{<Text>}
+\addsocialnetworkdata{\faLinkedin}{http://www.linkedin.com/in/joostwillemse/}{LinkedIn}
+
+%                            COMPETENTIES
+
+% add Competenties Usage:
+% \addcompetenciesdata{<Text>}
+\addcompetenciesdata{Leiderschap en strategisch inzicht}
+\addcompetenciesdata{Teamontwikkeling en coaching}
+\addcompetenciesdata{Bruggenbouwer tussen business en techniek}
+\addcompetenciesdata{Resultaatgericht werken}
+\addcompetenciesdata{Communicatieve vaardigheden}
 
 
 %-------------------------------------------------------------------------------
 %                              SIDEBAR 2nd PAGE
 %-------------------------------------------------------------------------------
-\definecolor{pastelgreen}{HTML}{D7ECD9}
-\definecolor{pastelpurple}{HTML}{D5D6EA}
-\definecolor{pastelorange}{HTML}{F5D5CB}
-\definecolor{pastelyellow}{HTML}{F6F6EB}
 
 \addtobacksidebar{
 
@@ -95,7 +93,6 @@
 
 \makefrontsidebar
 
-\sidetext\tiny{} % hack om in te springen
 \cvsection{Profiel}
 \sidetext{Ik ben een ervaren IT-leider en securityspecialist met een sterke achtergrond in cloudtransformatie, DevOps en informatiebeveiliging. In de afgelopen jaren heb ik organisaties geholpen met het implementeren van veilige en schaalbare cloudomgevingen, waarbij ik onder andere ISO 27001-, SOC2- en GDPR-certificeringen heb gerealiseerd.
 \newline \newline

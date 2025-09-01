@@ -41,33 +41,28 @@
 % any other custom entry
 \cvcustomdata{\faFlag}{Nederlands}
 
-% social network accounts incl. proper hyperlinks
-\sncustomdata{\faLinkedin}{www.linkedin.com/in/daan-roeterink/}{LinkedIn}
-\sncustomdata{\faGithub}{https://github.com/daanroeterink}{Github (Privé projecten)}
+%                            SOCIAL NETWORK ACCOUNTS
 
-%-------------------------------------------------------------------------------
-%                              SIDEBAR 1st PAGE
-%-------------------------------------------------------------------------------
-% add more profile sections to sidebar on first page
+% see https://www.ipgp.fr/~moguilny/LaTeX/fontawesome5Icons.pdf
+% add social network accounts incl. proper hyperlinks Usage:
+% \addsocialnetworkdata{<Icon>}{<Url>}{<Text>}
+\addsocialnetworkdata{\faLinkedin}{www.linkedin.com/in/daan-roeterink/}{LinkedIn}
+\addsocialnetworkdata{\faGithub}{https://github.com/daanroeterink}{Github (Privé projecten)}
 
-\addtofrontsidebar{
+%                            COMPETENTIES
 
-	\sidesection{Competenties}
-		\babelviscompetentie{Samenwerkingsgericht}
-		\babelviscompetentie{Loyaal en betrouwbaar}
-		\babelviscompetentie{Leergierig en nieuwsgierig}
-		\babelviscompetentie{Oplossingsgericht}
-		\babelviscompetentie{Verbindend vermogen}
-}
+% add Competenties Usage:
+% \addcompetenciesdata{<Text>}
+\addcompetenciesdata{Samenwerkingsgericht}
+\addcompetenciesdata{Loyaal en betrouwbaar}
+\addcompetenciesdata{Leergierig en nieuwsgierig}
+\addcompetenciesdata{Oplossingsgericht}
+\addcompetenciesdata{Verbindend vermogen}
 
 
 %-------------------------------------------------------------------------------
 %                              SIDEBAR 2nd PAGE
 %-------------------------------------------------------------------------------
-\definecolor{pastelgreen}{HTML}{D7ECD9}
-\definecolor{pastelpurple}{HTML}{D5D6EA}
-\definecolor{pastelorange}{HTML}{F5D5CB}
-\definecolor{pastelyellow}{HTML}{F6F6EB}
 
 \addtobacksidebar{
 
@@ -104,8 +99,6 @@
 
 \makefrontsidebar
 
-\sidetext\tiny{} % hack om in te springen
-% \cvsection{}
 \cvsection{Profiel}
 \sidetext{Ik ben een gedreven Cloud- en DevOps Engineer met diepgaande kennis van Kubernetes en moderne ontwikkel- en deploymentomgevingen. Dankzij mijn achtergrond als programmeur en mijn ervaring in DevOps weet ik complexe technische vraagstukken snel te doorgronden en om te zetten in praktische oplossingen. 
 \newline\newline  

@@ -47,23 +47,22 @@
 %                            SOCIAL NETWORK ACCOUNTS
 
 % see https://www.ipgp.fr/~moguilny/LaTeX/fontawesome5Icons.pdf
-% social network accounts incl. proper hyperlinks
-\sncustomdata{\faLinkedin}{https://www.linkedin.com/in/bas-magre/}{LinkedIn}
-\sncustomdata{\faYoutube}{https://www.youtube.com/@justanotherdevopsguy}{Youtube kanaal}
-\sncustomdata{\faGithub}{https://github.com/Opvolger}{Github (Privé projecten)}
+% add social network accounts incl. proper hyperlinks Usage:
+% \addsocialnetworkdata{<Icon>}{<Url>}{<Text>}
+\addsocialnetworkdata{\faLinkedin}{https://www.linkedin.com/in/bas-magre/}{LinkedIn}
+\addsocialnetworkdata{\faYoutube}{https://www.youtube.com/@justanotherdevopsguy}{Youtube kanaal}
+\addsocialnetworkdata{\faGithub}{https://github.com/Opvolger}{Github (Privé projecten)}
 
 %                            COMPETENTIES
 
-% add more profile sections to sidebar on first page
-\addtofrontsidebar{
+% add Competenties Usage:
+% \addcompetenciesdata{<Text>}
+\addcompetenciesdata{Analytisch vermogen}
+\addcompetenciesdata{Volhardend}
+\addcompetenciesdata{Kwaliteitsgericht}
+\addcompetenciesdata{Oog voor security en betrouwbaarheid}
+\addcompetenciesdata{Probleemoplossend vermogen}
 
-	\sidesection{Competenties}
-		\babelviscompetentie{Analytisch vermogen}
-		\babelviscompetentie{Volhardend}
-		\babelviscompetentie{Kwaliteitsgericht}
-		\babelviscompetentie{Oog voor security en betrouwbaarheid}
-		\babelviscompetentie{Probleemoplossend vermogen}
-}
 %-------------------------------------------------------------------------------
 %                              SIDEBAR 2nd PAGE
 %-------------------------------------------------------------------------------
@@ -102,9 +101,6 @@
 
 \makefrontsidebar
 
-% \sidetext\tiny{} % hack om in te springen
-% \setlength{\parskip}{1ex}
-% \cvsection{}
 \cvsection{Profiel}
 \sidetext{Ik ben een ervaren Cloud- en DevOps Engineer met een sterke achtergrond in softwareontwikkeling en operations. Ik heb uitgebreide kennis van Kubernetes, CI/CD-buildstraten en cloudmigraties, en combineer dit met een scherp oog voor security en betrouwbaarheid.
 \newline 
