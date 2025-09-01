@@ -100,30 +100,19 @@
 \DeclareOptionX{profilepicyshift}{\setlength{\profilepicyshift}{#1}}
 
 % sidebar settings
-\newcommand*{\sidebarplacement}{}
-\DeclareOptionX{sidebarplacement}{\renewcommand{\sidebarplacement}{#1}}
 \newcommand*{\sidesectionsize}{\huge}
 \DeclareOptionX{sidesectionsize}{%
 	\expandafter\renewcommand{\sidesectionsize}{\csname #1\endcsname}%
 }
 
-% show front sidebar on all pages
-\newtoggle{tsamesidebar}
-\togglefalse{tsamesidebar}
-\DeclareOptionX{frontsidebaronallpages}{
-	\toggletrue{tsamesidebar}
-	\AddToHook{shipout/before}{\makefrontsidebar}
-}
 
 % logo settings
 \newlength\logowidth%
-\setlength{\logowidth}{180pt}
+\setlength{\logowidth}{179pt}
 \DeclareOptionX{logowidth}{\setlength{\logowidth}{#1}}
 \newlength\logospace%
 \setlength{\logospace}{10pt}
 \DeclareOptionX{logospace}{\setlength{\logospace}{#1}}
-\newcommand*{\logoposition}{}
-\DeclareOptionX{logoposition}{\renewcommand{\logoposition}{#1}}
 
 % show sidebar and page margins
 \newtoggle{tshowframes}
@@ -167,20 +156,11 @@
 
 % let geometry package perform the changes;
 % must come after loading the base class to prevent overwriting
-\ifthenelse{\equal{\sidebarplacement}{right}}{%
-	\geometry{
-		top=\topbottommargin,
-		bottom=\topbottommargin,
-		right=\sidebarwidth + \leftrightmargin,
-		left=\leftrightmargin,
-	}
-}{% else
-	\geometry{
-		top=\topbottommargin,
-		bottom=\topbottommargin,
-		left=\sidebarwidth + \leftrightmargin,
-		right=\leftrightmargin,
-	}
+\geometry{
+	top=\topbottommargin,
+	bottom=\topbottommargin,
+	left=\sidebarwidth + \leftrightmargin,
+	right=\leftrightmargin,
 }
 
 %-------------------------------------------------------------------------------
@@ -523,38 +503,23 @@
 	{\large\bfseries\color{maincolor!70}\today \hfill \cvname}
 }
 
-
 %-------------------------------------------------------------------------------
 %                               SIDEBAR LAYOUT
 %-------------------------------------------------------------------------------
 % draw sidebar background on current page
 \newcommand{\drawSidebarBG}{%
 	\AddToShipoutPictureBG*{%
-		\ifthenelse{\equal{\sidebarplacement}{right}}{%
-			\begin{tikzpicture}[remember picture, overlay]
-				\node at (current page.north east)[
-					rectangle,
-					fill=sidecolor,
-					anchor=north east,
-					minimum width=\sidebarwidth,
-					minimum height=\paperheight,
-				]{};%
-				% plot vertical red guideline
-				\plotvline%
-			\end{tikzpicture}%
-		}{% else
-			\begin{tikzpicture}[remember picture, overlay]
-				\node[
-					rectangle,
-					fill=sidecolor,
-					anchor=north west,
-					minimum width=\sidebarwidth,
-					minimum height=\paperheight,
-				]{};%
-				% plot vertical red guideline
-				\plotvline%
-			\end{tikzpicture}%
-		}%
+		\begin{tikzpicture}[remember picture, overlay]
+			\node[
+				rectangle,
+				fill=sidecolor,
+				anchor=north west,
+				minimum width=\sidebarwidth,
+				minimum height=\paperheight,
+			]{};%
+			% plot vertical red guideline
+			\plotvline%
+		\end{tikzpicture}%
 	}%
 }%
 
@@ -564,12 +529,7 @@
 % as opposed to "relative" - strange but true.
 \newenvironment{sidebar}{%
 	\drawSidebarBG%
-	\ifthenelse{\equal{\sidebarplacement}{right}}{%
-		\begin{textblock*}{\sidebartextwidth}%
-			(\paperwidth - \sidebarwidth + \leftrightmargin, \topbottommargin)
-	}{% else
-		\begin{textblock*}{\sidebartextwidth}(\leftrightmargin, \topbottommargin)
-	}%
+	\begin{textblock*}{\sidebartextwidth}(\leftrightmargin, \topbottommargin)
 }{%
 	\end{textblock*}%
 }

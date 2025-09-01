@@ -100,8 +100,6 @@ Possible options that can be passed to FortySecondsCV are:
 - `profilepicyshift=<length>` sets the yshift for the profile picture.
 - `profilepicrounding=<length>` sets the rounding radius for the top right and
   bottom left corner in the default rounded profile picture style.
-- `sidebarplacement=right` puts the sidebar to the right of the body instead of
-  to the left.
 - `frontsidebaronallpages` renders the same (front)sidebar on all pages.
 
   **NOTE:** when using this option, there is no need for any manual
@@ -172,8 +170,7 @@ you can enclose parts of the sidebar content in a `sidebarminipage`:
 ```
 
 Using the `sidebar` environment, you can also add more sidebar definitions for
-additional pages easily. If you want the sidebar to appear on the right instead
-of the left side of the body, use the class option `sidebarplacement=right`.
+additional pages easily.
 
 If you want to remove the sidebar entirely on a single page, just don't call
 any of the sidebar constructors. Then you may set your preferred margins using
@@ -495,8 +492,7 @@ body can be adjusted via the `datecolwidth` class option.
   CV automatically. While this seems to be no problem for most parts as far as
   I can tell (I'm not used to RTL at all), it does break some of the skill
   commands, notably `\pointskill` and `\membership` and leads to some spacing
-  issues. Anyways, for RTL you probably want to use the
-  `sidebarplacement=right` feature as well.
+  issues.
 
 - TODO: LuaLaTeX + babel settings
 

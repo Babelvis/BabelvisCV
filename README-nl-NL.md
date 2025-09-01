@@ -105,8 +105,6 @@ De mogelijke opties die kunnen worden doorgegeven aan FortySecondsCV zijn:
 * `profilepicrounding=<lengte>` stelt de afrondingsradius in voor de rechter
   bovenhoek en de linker benedenhoek voor de standaard afgeronde
   profielfotostijl.
-* `sidebarplacement=right` verplaatst de zijbalk naar de rechterkant van het
-  document in plaats van links.
 
 Let op:
 
@@ -165,9 +163,7 @@ diagramlabels, kun je delen van de zijbalkinhoud insluiten in een
 \end{sidebarminipage}
 ```
 Met behulp van de `sidebar`-omgeving kun je ook makkelijk meer sidebar
-definities toevoegen voor extra pagina's. Als je wilt dat de zijbalk in plaats
-van de linkerkant, aan de rechterkant van de pagina verschijnt, gebruik dan de
-klasse-optie `sidebarplacement=right`.
+definities toevoegen voor extra pagina's.
 
 Als je de zijbalk volledig wilt verwijderen op een enkele pagina, roep dan
 simpelweg de zijbalk constructors niet aan. Vervolgens kun je de gewenste marges
@@ -462,8 +458,7 @@ gedefinieerd worden binnen de `document` omgeving.
   onderdelen geen probleem lijkt te zijn voor zover ik kan zien (ik ben helemaal
   niet gewend aan RTL), breekt het wel een deel van de vaardigheid commando's,
   met name `\pointskill` en `\membership`, en leidt het tot enige problemen met
-  de afstanden. Hoe dan ook, voor RTL wil je ook waarschijnlijk de
-  `sidebarplacement=right` optie gebruiken.
+  de afstanden.
 
 * TODO: LuaLaTeX + babel-instellingen
 
