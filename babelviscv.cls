@@ -98,9 +98,6 @@
 \newlength\profilepicyshift
 \setlength{\profilepicyshift}{0mm}
 \DeclareOptionX{profilepicyshift}{\setlength{\profilepicyshift}{#1}}
-\newlength\profilepicrounding
-\setlength{\profilepicrounding}{0.15\sidebarwidth}
-\DeclareOptionX{profilepicrounding}{\setlength{\profilepicrounding}{#1}}
 
 % sidebar settings
 \newcommand*{\sidebarplacement}{}
@@ -277,6 +274,7 @@
 \newcommand*{\cvsubsection}[1]{\subsection*{#1}}
 \titleformat{\subsection}%
 	{\color{subsectioncolor}\normalfont\large}{}{0pt}{}
+\titlespacing*{\subsection}{0pt}{1.5ex}{1ex}
 
 % for compatibility with older versions
 \newcommand*{\profilesection}[1]{\subsubsection*{#1}}
@@ -309,6 +307,8 @@
 
 % use carlito font as default
 \usepackage[sfdefault]{carlito}
+
+\newcommand{\cvtablespace}{1.0}
 
 %-------------------------------------------------------------------------------
 %                              SIDEBAR ELEMENTS
