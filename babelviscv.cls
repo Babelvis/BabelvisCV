@@ -1,16 +1,12 @@
-% FortySecondsCV LaTeX class
-% Copyright © 2019-2022 René Wirnata <rene.wirnata@pandascience.net>
+% BabelvisCV LaTeX class
+% Copyright © 2025-2025 Bas Magre <bas.magre@babelvis.nl>
 % Licensed under the 3-Clause BSD License. See LICENSE file for details.
-%
-% Please visit https://github.com/PandaScience/FortySecondsCV for the most
-% recent version! For bugs or feature requests, please open a new issue on
-% github.
-%
-% Contributors:
-% https://github.com/PandaScience/FortySecondsCV/graphs/contributors
 %
 % Attributions
 % ------------
+% * babelviscv is based on the fortysecondscv class by René Wirnata
+%   (rene.wirnata@pandascience.net), released under the 3-Clause BSD License and available under
+%   https://github.com/PandaScience/FortySecondsCV
 % * fortysecondscv is based on the twentysecondcv class by Carmine Spagnuolo
 %   (cspagnuolo@unisa.it), released under the MIT license and available under
 %   https://github.com/spagnuolocarmine/TwentySecondsCurriculumVitae-LaTex
@@ -329,7 +325,6 @@
 	\ifthenelse{\equal{\logoposition}{before}}{%
 		\renewcommand{\plotlogobefore}{%
 			\begin{figure}\centering%
-				% \includesvg{#1}
 				\includegraphics[align=c, width=\logowidth]{#1}%
 			\end{figure}
 			\vspace*{\logospace}%
@@ -338,7 +333,6 @@
 		\renewcommand{\plotlogoafter}{%
 			\vspace*{\logospace}%
 			\begin{figure}\centering%
-				% \includesvg{#1}
 				\includegraphics[align=c, width=\logowidth]{#1}%
 			\end{figure}
 		}%
@@ -395,8 +389,7 @@
 }
 \newcommand{\nameandjobafterpic}{%
 	\ifthenelse{\equal{\nameandjobposition}{after}}{%
-		\vspace{1ex}
-		\nameandjob
+		\centering\nameandjob
 	}{}
 }
 
