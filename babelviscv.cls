@@ -44,9 +44,6 @@
 	nomarginpar,
 ]{geometry}
 
-% use carlito font as default
-\usepackage[sfdefault]{carlito}
-
 % pre-define some colors the user can choose from
 \definecolor{cvblue}{HTML}{08398B}
 \definecolor{cvgreen}{HTML}{007170}
@@ -292,7 +289,9 @@
 % "starred version kills the indentation of the paragraph following the title"
 \titlespacing*{\subsubsection}{0pt}{1ex}{1ex}
 
-% some global document variables
+%-------------------------------------------------------------------------------
+%                              SOME GLOBAL DOCUMENT VARIABLES
+%-------------------------------------------------------------------------------
 
 % improve word spacing and hyphenation
 \usepackage{microtype}
@@ -307,6 +306,9 @@
 	\usepackage[utf8]{inputenc}
 	\usepackage[T1]{fontenc}
 \fi
+
+% use carlito font as default
+\usepackage[sfdefault]{carlito}
 
 %-------------------------------------------------------------------------------
 %                              SIDEBAR ELEMENTS
@@ -329,10 +331,6 @@
 }
 
 % social network item; \social{<icon>}{<url>}{<text>}
-\newcommand*{\social}[3]{%
-	\circleicon{#1} & \href{#2}{\normalsize\sidetext{#3}}\\%
-}
-
 \newcommand*{\socialbabelvis}[3]{%
 	\circleicon{#1} & \href{#2}{\sidetext{#3}} \newline \socialurl{#2}\\%
 }
@@ -418,7 +416,7 @@
 }
 
 % icon style for personal information
-\newcommand*\circleicon[1]{%
+\newcommand*{\circleicon}[1]{%
 	\tikz[baseline = (char.base)]{%
 		\node[%
 			shape=circle,%
@@ -444,41 +442,26 @@
 \newcommand{\cvicon}[1]{\makebox[1em]{\color{iconcolor} #1}}
 \newcommand{\flag}[1]{\includegraphics[align=c, width=1em]{#1}}
 
-% \pointskill[<indent>]{<icon>}{<description>}{<points>}[<maxpoints>] creates
-% | [indent] [icon]  description  \hfill  ● ● ● ○ ○ |
-% -- inspired by arravc.cls by LianTze Lim: https://github.com/liantze/AltaCV
-\NewDocumentCommand{\pointskill}{ O{0em} m m m O{5} }{%
-	\hspace{#1} \cvicon{#2} ~ \sidetext{#3} \hfill%
-	\foreach \x in {1,...,#5}{%
-		\space%
-		{\ifnumgreater{\x}{#4}{\color{skillbg}}{\color{iconcolor}}% from etoolbox
-		% don't use totalheight; see https://tex.stackexchange.com/a/41014
-		\raisebox{0.5\height-0.4ex}{\scriptsize\faCircle}%
-		}
-	}\par%
-}
-
-% \taalkill[<indent>]{<icon>}{<description>}{<points>}[<maxpoints>] creates
-% | [indent] [icon]  description  \hfill  ● ● ● ○ ○ |
-% -- inspired by arravc.cls by LianTze Lim: https://github.com/liantze/AltaCV
-\NewDocumentCommand{\taalkill}{ O{0em} m m m O{5} }{%
-	\hspace{#1} \cvicon{#2} ~ \sidetext{#3} \hfill%
-	\sidetext{#4}
-	\par%
-}
-
-% \babelvisskill[<indent>]{<description>}{<points>}[<maxpoints>] creates
+% \babelvisskill[<indent>][<maxpoints>]{<description>}{<points>} creates
 % | [indent]  description  \hfill  ● ● ● ○ ○ |
 % -- inspired by arravc.cls by LianTze Lim: https://github.com/liantze/AltaCV
-\NewDocumentCommand{\babelvisskill}{ O{0em} m m O{5} }{%
+\newcommand{\babelvisskill}[3][0em]{%
 	\hspace{#1} \sidetext{#2} \hfill%
-	\foreach \x in {1,...,#4}{%
+	\foreach \x in {1,...,5}{%
 		\space%
 		{\ifnumgreater{\x}{#3}{\color{skillbg}}{\color{iconcolor}}% from etoolbox
 		% don't use totalheight; see https://tex.stackexchange.com/a/41014
 		\raisebox{0.5\height-0.4ex}{\scriptsize\faCircle}%
 		}
 	}\par%
+}
+
+% \languageskill[<indent>]{<icon>}{<description>}{<skilled>} creates
+% | [indent] [icon]  description  \hfill  skilled |
+% -- inspired by arravc.cls by LianTze Lim: https://github.com/liantze/AltaCV
+\newcommand{\languageskill}[4][0em]{%
+	\hspace{#1} \cvicon{#2} ~ \sidetext{#3} \hfill \sidetext{#4}
+	\par%
 }
 
 % \skill[<indent>]{<description>} creates in sidebar
@@ -620,7 +603,6 @@
 			\socialnetworkdata
 		\end{icontable}
 
-		% user definitions
 		\frontsidebar
 	\end{sidebar}
 }
