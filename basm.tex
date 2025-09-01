@@ -17,97 +17,29 @@
 %                             ADDITIONAL PACKAGES
 %-------------------------------------------------------------------------------
 \documentclass[
-	a4paper,
-	logowidth=180pt,
-	logospace=10pt,
-	nameandjobposition=before,
-	logoposition=before,
-	nameandjobposition=after,
-	profilepicstyle=profilecircle
+	a4paper
 ]{babelviscv}
-
-% fine tune line spacing
-% \usepackage{setspace}
-% \setstretch{1.1}
 
 % improve word spacing and hyphenation
 \usepackage{microtype}
 \usepackage{ragged2e}
-\usepackage{enumitem}
 
-% uncomment in case you don't want any hyphenation
-% \usepackage[none]{hyphenat}
-
-% take care of proper font encoding
-\ifxetexorluatex
-	\usepackage{fontspec}
-	\defaultfontfeatures{Ligatures=TeX}
-	% \newfontfamily\headingfont[Path=fonts/]{segoeuib.ttf} % use local font
-\else
-	\usepackage[utf8]{inputenc}
-	\usepackage[T1]{fontenc}
-\fi
-
-% use a sans serif font as default
-% \usepackage[sfdefault]{ClearSans}
-% \usepackage[sfdefault]{noto}
-% \usepackage{opensans}
-% \usepackage{wela}
-% \usepackage[T1]{fontenc}
+% use carlito font as default
 \usepackage[sfdefault]{carlito}
 
-% \usepackage{fontspec}
-% \setmainfont{Calibri}
-
-% multi-language CV XeLaTeX and polyglossia (should also work with LuaLaTeX)
-% NOTE: breaks \pointskill, \membership and some spacings
-% \ifxetexorluatex
-% 	\usepackage{polyglossia}
-% 	\newfontfamily\arabicfontsf[Script=Arabic,Scale=1.5]{Amiri}
-% 	\newfontfamily\englishfontsf{Clear Sans}
-% 	\setmainfont{Amiri}
-% 	\setdefaultlanguage{arabic}
-% 	\setotherlanguage{english}
-% \fi
-
-% enable mathematical syntax for some symbols like \varnothing
-\usepackage{amssymb}
-
-% bubble diagram configuration
-\usepackage{smartdiagram}
-\smartdiagramset{
-	% default font size is \large, so adjust to harmonize with sidebar layout
-	bubble center node font = \footnotesize,
-	bubble node font = \footnotesize,
-	% default: 4cm/2.5cm; make minimum diameter relative to sidebar size
-	bubble center node size = 0.4\sidebartextwidth,
-	bubble node size = 0.25\sidebartextwidth,
-	distance center/other bubbles = 1.5em,
-	% set center bubble color
-	bubble center node color = maincolor!70,
-	% define the list of colors usable in the diagram
-	set color list = {maincolor!10, maincolor!40,
-	maincolor!20, maincolor!60, maincolor!35},
-	% sets the opacity at which the bubbles are shown
-	bubble fill opacity = 0.8,
-}
-
 %-------------------------------------------------------------------------------
+%                              SIDEBAR 1st PAGE
+%-------------------------------------------------------------------------------
+
 %                            PERSONAL INFORMATION
-%-------------------------------------------------------------------------------
+
 %% mandatory information
 % your name
 \cvname{Bas Magré}
-% job title/career
-% \cvjobtitle{Panda Scientist,\\[0.2em] Panda of the Year}
 
 %% optional information
 % profile picture
 \cvprofilepic{pics/profile/basm.jpg}
-% logo picture
-% \cvlogopic{pics/logo_babelvis_old.png}
-\cvlogopic{pics/logo_babelvis.png}
-
 % NOTE: ordering in sidebar will mimic the following order
 \cvnameprofile{Sebastiaan Magré (Bas)}
 % email address
@@ -123,25 +55,19 @@
 % any other custom entry
 \cvcustomdata{\faFlag}{Nederlands}
 
-%-------------------------------------------------------------------------------
-%                              SIDEBAR 1st PAGE
-%-------------------------------------------------------------------------------
+%                            SOCIAL NETWORK ACCOUNTS
+
+% see https://www.ipgp.fr/~moguilny/LaTeX/fontawesome5Icons.pdf
+% social network accounts incl. proper hyperlinks
+\sncustomdata{\faLinkedin}{https://www.linkedin.com/in/bas-magre/}{LinkedIn}
+\sncustomdata{\faYoutube}{https://www.youtube.com/@justanotherdevopsguy}{Youtube kanaal}
+\sncustomdata{\faGithub}{https://github.com/Opvolger}{Github (Privé projecten)}
+
+%                            COMPETENTIES
+
 % add more profile sections to sidebar on first page
 \addtofrontsidebar{
-	% social network accounts incl. proper hyperlinks
-	\sidesection{Social Network}
-		\begin{icontable}[1]{1.7em}{0.4em}
-		% see https://www.ipgp.fr/~moguilny/LaTeX/fontawesome5Icons.pdf
-			\socialbabelvis{\faLinkedin}
-				{https://www.linkedin.com/in/bas-magre/}
-				{LinkedIn}
-			\socialbabelvis{\faYoutube}
-				{https://www.youtube.com/@justanotherdevopsguy}
-				{Youtube kanaal}
-			\socialbabelvis{\faGithub}
-				{https://github.com/Opvolger}
-				{Github (Privé projecten)}
-		\end{icontable}
+
 	\sidesection{Competenties}
 		\babelviscompetentie{Analytisch vermogen}
 		\babelviscompetentie{Volhardend}
@@ -149,15 +75,10 @@
 		\babelviscompetentie{Oog voor security en betrouwbaarheid}
 		\babelviscompetentie{Probleemoplossend vermogen}
 }
-
-
 %-------------------------------------------------------------------------------
 %                              SIDEBAR 2nd PAGE
 %-------------------------------------------------------------------------------
-\definecolor{pastelgreen}{HTML}{D7ECD9}
-\definecolor{pastelpurple}{HTML}{D5D6EA}
-\definecolor{pastelorange}{HTML}{F5D5CB}
-\definecolor{pastelyellow}{HTML}{F6F6EB}
+
 
 \addtobacksidebar{
 

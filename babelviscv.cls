@@ -120,9 +120,10 @@
 
 % logo settings
 \newlength\logowidth%
-\setlength{\logowidth}{\profilepicsize}
+\setlength{\logowidth}{180pt}
 \DeclareOptionX{logowidth}{\setlength{\logowidth}{#1}}
 \newlength\logospace%
+\setlength{\logospace}{10pt}
 \DeclareOptionX{logospace}{\setlength{\logospace}{#1}}
 \newcommand*{\logoposition}{}
 \DeclareOptionX{logoposition}{\renewcommand{\logoposition}{#1}}
@@ -298,45 +299,15 @@
 % style for name
 \newcommand*{\cvnameformat}{\Huge\color{maincolor}}
 
-% style for job title
-% \newcommand*{\cvjobtitleformat}{\Large\color{black!80}}
 
 % mandatory personal information
 \newcommand*{\cvname}[1]{\renewcommand{\cvname}{#1}}
-% \newcommand*{\cvjobtitle}[1]{\renewcommand{\cvjobtitle}{#1}}
 
 % profile picture (optional)
 \newcommand{\plotprofilepicture}{}
 \newcommand*{\cvprofilepic}[1]{
 	\renewcommand{\cvprofilepic}{#1}
-
-	\ifthenelse{\equal{\profilepicstyle}{profilecircle}}{
-		\renewcommand{\plotprofilepicture}{\profilecircle}
-	}{
-		\renewcommand{\plotprofilepicture}{\profileroundedcorners}
-	}
-}
-
-% additional logo (optional)
-\newcommand{\plotlogobefore}{}
-\newcommand{\plotlogoafter}{}
-\newcommand*{\cvlogopic}[1]{%
-	% default = before; if any other (incl. 'after') --> after
-	\ifthenelse{\equal{\logoposition}{before}}{%
-		\renewcommand{\plotlogobefore}{%
-			\begin{figure}\centering%
-				\includegraphics[align=c, width=\logowidth]{#1}%
-			\end{figure}
-			\vspace*{\logospace}%
-		}%
-	}{%
-		\renewcommand{\plotlogoafter}{%
-			\vspace*{\logospace}%
-			\begin{figure}\centering%
-				\includegraphics[align=c, width=\logowidth]{#1}%
-			\end{figure}
-		}%
-	}
+	\renewcommand{\plotprofilepicture}{\profilecircle}
 }
 
 % social network item; \social{<icon>}{<url>}{<text>}
@@ -355,6 +326,14 @@
 % personal information item; \personal{<icon>}{<text>}
 \newcommand*{\personal}[2]{%
 	\circleicon{#1} & {\sidetext{#2}}\\%
+}
+
+% add social network accounts incl. proper hyperlinks Usage:
+% \sncustomdata{<Icon>}{<Url>}{<Text>}
+% icon can be taken from FontAwesome or Academicon for example
+\newcommand{\socialnetworkdata}{}
+\newcommand*{\sncustomdata}[3]{%
+	\apptocmd{\socialnetworkdata}{\socialbabelvis{#1}{#2}{#3}}{}{}%
 }
 
 % other personal information as macro that can be used later. Usage:
@@ -382,52 +361,6 @@
 % TODO find a cleaner solution for consistent spacing
 \newcommand{\nameandjob}{%
 	{\cvnameformat\cvname}\par%
-	\setlength{\parskip}{2ex}
-	% {\cvjobtitleformat\cvjobtitle}\par%
-	\setlength{\parskip}{1ex}
-}
-
-\newcommand{\nameandjobbeforepic}{%
-	\ifthenelse{\equal{\nameandjobposition}{before}}{%
-		\begin{center}
-		\nameandjob
-		\vspace{1ex}
-        \end{center}
-	}{}
-}
-\newcommand{\nameandjobafterpic}{%
-	\ifthenelse{\equal{\nameandjobposition}{after}}{%
-		\centering\nameandjob
-	}{}
-}
-
-\newcommand{\profileroundedcorners}{%
-	\begin{figure}\centering
-		% see TikZ/pgf v3.1.1 manual §2.11 (clipping), §14.5 (rounded corners),
-		% §12 (scopes), §13.2 (coordinate systems)
-		\begin{tikzpicture}[x=\profilepicsize, y=\profilepicsize]
-			\begin{scope}
-				\path[clip]
-					(0, 0) [sharp corners] --
-					(0, 1) [rounded corners=\profilepicrounding] --
-					(1, 1) [sharp corners] --
-					(1, 0) [rounded corners=\profilepicrounding] -- cycle;
-				\node[anchor=center, inner sep=0pt, xshift=\profilepicxshift,
-						yshift=\profilepicyshift] (profilepic) at (0.5, 0.5)
-					{\includegraphics[width=\profilepiczoom\profilepicsize]
-						{\cvprofilepic}};
-			\end{scope}
-			\ifdim \profilepicborderwidth > 0pt
-				\begin{scope}
-					\draw[line width=\profilepicborderwidth, color=iconcolor]
-					(0, 0) [sharp corners] --
-					(0, 1) [rounded corners=\profilepicrounding] --
-					(1, 1) [sharp corners] --
-					(1, 0) [rounded corners=\profilepicrounding] -- cycle;
-				\end{scope}
-			\fi
-		\end{tikzpicture}
-	\end{figure}
 }
 
 \newcommand{\profilecircle}{%
@@ -729,26 +662,28 @@
 		% most sidebar commands end with \par; increase space between them
 		\setlength{\parskip}{1ex}
 
-		% name and job - when \nameandjobposition = 'before'
-		\nameandjobbeforepic
+		% insert logo
+		\begin{figure}\centering%
+			\includegraphics[align=c, width=\logowidth]{pics/logo_babelvis.png}%
+		\end{figure}
+		\vspace*{\logospace}%
 
-		% optionally insert logo picture before profile
-		\plotlogobefore
-
-		% optionally insert profile picture
+		% insert profile picture
 		\plotprofilepicture
 
-		% optionally insert logo picture after profile
-		\plotlogoafter
-
 		% name and job - when \nameandjobposition = 'after'
-		\nameandjobafterpic
+		\centering\nameandjob
 
 		% personal information
 		\sidesection{Personalia}
-		% \vspace*{0.5em}
 		\begin{icontable}[2]{1.7em}{0.4em}
 			\personaldata
+		\end{icontable}
+
+			% social network accounts incl. proper hyperlinks
+		\sidesection{Social Network}
+		\begin{icontable}[1]{1.7em}{0.4em}
+			\socialnetworkdata
 		\end{icontable}
 
 		% user definitions

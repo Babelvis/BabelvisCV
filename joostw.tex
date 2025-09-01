@@ -17,13 +17,7 @@
 %                             ADDITIONAL PACKAGES
 %-------------------------------------------------------------------------------
 \documentclass[
-	a4paper,
-	logowidth=180pt,
-	logospace=10pt,
-	nameandjobposition=before,
-	logoposition=before,
-	nameandjobposition=after,
-	profilepicstyle=profilecircle
+	a4paper
 ]{babelviscv}
 
 % fine tune line spacing
@@ -93,15 +87,10 @@
 %% mandatory information
 % your name
 \cvname{Joost Willemse}
-% job title/career
-% \cvjobtitle{Panda Scientist,\\[0.2em] Panda of the Year}
 
 %% optional information
 % profile picture
 \cvprofilepic{pics/profile/Joost.png}
-% logo picture
-\cvlogopic{pics/logo_babelvis.png}
-
 % NOTE: ordering in sidebar will mimic the following order
 \cvnameprofile{Joost Willemse}
 % email address
@@ -117,19 +106,13 @@
 % any other custom entry
 \cvcustomdata{\faFlag}{Nederlands}
 
+% social network accounts incl. proper hyperlinks
+\sncustomdata{\faLinkedin}{http://www.linkedin.com/in/joostwillemse/}{LinkedIn}
 %-------------------------------------------------------------------------------
 %                              SIDEBAR 1st PAGE
 %-------------------------------------------------------------------------------
 % add more profile sections to sidebar on first page
 \addtofrontsidebar{
-	% social network accounts incl. proper hyperlinks
-	\sidesection{Social Network}
-		\begin{icontable}[1]{1.7em}{0.4em}
-		% see https://www.ipgp.fr/~moguilny/LaTeX/fontawesome5Icons.pdf
-			\socialbabelvis{\faLinkedin}
-				{http://www.linkedin.com/in/joostwillemse/}
-				{LinkedIn}
-		\end{icontable}
 	\sidesection{Competenties}
 		\babelviscompetentie{Leiderschap en strategisch inzicht}
 		\babelviscompetentie{Teamontwikkeling en coaching}

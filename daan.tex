@@ -17,13 +17,7 @@
 %                             ADDITIONAL PACKAGES
 %-------------------------------------------------------------------------------
 \documentclass[
-	a4paper,
-	logowidth=180pt,
-	logospace=10pt,
-	nameandjobposition=before,
-	logoposition=before,
-	nameandjobposition=after,
-	profilepicstyle=profilecircle
+	a4paper
 ]{babelviscv}
 
 % fine tune line spacing
@@ -93,15 +87,10 @@
 %% mandatory information
 % your name
 \cvname{Daan Roeterink}
-% job title/career
-% \cvjobtitle{Panda Scientist,\\[0.2em] Panda of the Year}
 
 %% optional information
 % profile picture
 \cvprofilepic{pics/profile/daan.jpg}
-% logo picture
-\cvlogopic{pics/logo_babelvis.png}
-
 % NOTE: ordering in sidebar will mimic the following order
 \cvnameprofile{Daniël Willem Roeterink (Daan)}
 % email address
@@ -117,24 +106,16 @@
 % any other custom entry
 \cvcustomdata{\faFlag}{Nederlands}
 
+% social network accounts incl. proper hyperlinks
+\sncustomdata{\faLinkedin}{www.linkedin.com/in/daan-roeterink/}{LinkedIn}
+\sncustomdata{\faGithub}{https://github.com/daanroeterink}{Github (Privé projecten)}
+
 %-------------------------------------------------------------------------------
 %                              SIDEBAR 1st PAGE
 %-------------------------------------------------------------------------------
 % add more profile sections to sidebar on first page
 
 \addtofrontsidebar{
-
-	% social network accounts incl. proper hyperlinks
-	\sidesection{Social Network}
-		\begin{icontable}[1]{1.7em}{0.4em}
-		% see https://www.ipgp.fr/~moguilny/LaTeX/fontawesome5Icons.pdf
-			\socialbabelvis{\faLinkedin}
-				{www.linkedin.com/in/daan-roeterink/}
-				{LinkedIn}
-			\socialbabelvis{\faGithub}
-				{https://github.com/daanroeterink}
-				{Github (Privé projecten)}
-		\end{icontable}
 
 	\sidesection{Competenties}
 		\babelviscompetentie{Samenwerkingsgericht}
