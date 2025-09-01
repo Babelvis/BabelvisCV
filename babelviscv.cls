@@ -50,7 +50,7 @@
 \definecolor{cvred}{HTML}{8B0000}
 \definecolor{cvsidecolor}{HTML}{E7E7E7}
 \definecolor{cvsectioncolor}{HTML}{08398B}
-\definecolor{cvsubsectioncolor}{HTML}{4D4D4D}
+\definecolor{cvsubsectioncolor}{HTML}{08398B}
 % set default values
 \colorlet{maincolor}{cvblue}
 \colorlet{sidecolor}{cvsidecolor}
@@ -340,8 +340,16 @@
 }
 
 % social network item; \social{<icon>}{<url>}{<text>}
-\newcommand*{\social}[4][1em]{%
-	\circleicon{#2} & \href{#3}{\sidetext{#4}}\\%
+\newcommand*{\social}[3]{%
+	\circleicon{#1} & \href{#2}{\normalsize\sidetext{#3}}\\%
+}
+
+\newcommand*{\socialbabelvis}[3]{%
+	\circleicon{#1} & \href{#2}{\sidetext{#3}} \newline \socialurl{#2}\\%
+}
+
+\newcommand*{\socialurl}[1]{%
+	\href{#1}{\scriptsize{#1}}
 }
 
 % personal information item; \personal{<icon>}{<text>}
@@ -735,8 +743,9 @@
 
 		% name and job - when \nameandjobposition = 'after'
 		\nameandjobafterpic
-		\sidesection{Personalia}
+
 		% personal information
+		\sidesection{Personalia}
 		% \vspace*{0.5em}
 		\begin{icontable}[2]{1.7em}{0.4em}
 			\personaldata
